@@ -47,12 +47,9 @@ module.exports = {
 			var user = match[0];
 			if(user){
 				bcrypt.compare(req.payload.password, user.password, function(err, same){
-					console.log("HELLO");
 					if(same){req.auth.session.set({"username": user.username});	
-						console.log("SAME");
 						return res.redirect("/home");
 					} else {
-						console.log("NOTSAME");
 						return res.view("404.swig");
 					}
 				});
